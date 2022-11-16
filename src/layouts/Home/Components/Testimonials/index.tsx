@@ -62,7 +62,7 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
             ref={sliderRef}
           >
             {testimonials.map(
-              ({ id, author, avatar, paragraph, role, stars }, index) => (
+              ({ id, author, avatar, paragraph, role, stars }) => (
                 <TestimonialCard key={id}>
                   <StarsWrapper>
                     {Array.from({ length: stars }).map((_, index) => (
