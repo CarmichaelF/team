@@ -1,9 +1,9 @@
 import Image from "next/image";
 import IsMobile from "../../../../components/IsMobile";
-import {TextCopy} from "../../components";
 import { Container, ContentWrapper, ImageContainer } from "./style";
 import { IImageProps, ILinkProps } from "../../../../types";
 import { getStrapiMedia } from "../../../../lib/media";
+import TextCopy from "../TextCopy";
 
 interface IProductDisplayProps {
   title: string;

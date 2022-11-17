@@ -1,5 +1,5 @@
 import { IImageProps, ILinkProps } from "../../types";
-import {Hero, ProductDisplay, Testimonials} from "./components";
+import { Hero, ProductDisplay, Testimonials } from "./components";
 import { Container } from "./style";
 
 interface IProductDisplayProps {
