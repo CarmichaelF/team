@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
-  background: url("/assets/hero-background.png") no-repeat 70%;
+interface IContainerProps {
+  backgroundURL: string;
+}
+
+export const Container = styled.section<IContainerProps>`
+  background: ${({ backgroundURL }) => `url(${backgroundURL}) no-repeat 70%`};
   min-height: 568px;
   background-size: cover;
 

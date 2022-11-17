@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Hamburguer from "../../icons/Hamburguer";
-import { Logo } from "../Logo";
+import Logo from "../Logo";
 import Close from "../../icons/Close";
 import {
   CloseMenuButton,
@@ -16,7 +16,11 @@ import {
 import Button from "../Button";
 import IsMobile from "../IsMobile";
 
-export default function Header() {
+interface HeaderProps {
+  isHome?: boolean;
+}
+
+export default function Header({ isHome = false }: HeaderProps) {
   //change background color when scroll
   const [scroll, setScroll] = useState(false);
 
@@ -27,6 +31,7 @@ export default function Header() {
   };
 
   useEffect(() => {
+    if (!isHome) return
     const callback = () => {
       setScroll(window.scrollY > 400);
     };
@@ -36,7 +41,13 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", callback);
     };
-  }, []);
+  }, [isHome]);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScroll(true);
+    }
+  }, [isHome]);
 
   const links = [
     {
@@ -65,9 +76,7 @@ export default function Header() {
   return (
     <Container scroll={scroll}>
       <Navigation as="nav">
-        <Logo className="logo">
-          Team<span>.</span>
-        </Logo>
+        <Logo href="/" />
         <IsMobile
           desktop={
             <DesktopMenu>
@@ -94,7 +103,11 @@ export default function Header() {
           mobile={
             <>
               <HamburguerButton onClick={toggleMobileMenu}>
-                <Hamburguer width={30} height={15} fill={scroll ? "#21283B" : "#ffffff"} />
+                <Hamburguer
+                  width={30}
+                  height={15}
+                  fill={scroll ? "#21283B" : "#ffffff"}
+                />
               </HamburguerButton>
               <MobileMenu isActive={isMobileMenuActive}>
                 <CloseMenuButton onClick={toggleMobileMenu}>

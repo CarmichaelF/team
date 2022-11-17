@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Image from "next/image";
 import IsMobile from "../../../../components/IsMobile";
 import TextCopy from "../TextCopy";

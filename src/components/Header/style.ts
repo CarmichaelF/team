@@ -18,13 +18,15 @@ export const Container = styled.header<IContainerProps>`
   background-color: ${({ scroll }) => (scroll ? "#ffffff" : "transparent")};
   color: ${({ scroll }) => (scroll ? "#21283b" : "#ffffff")};
   transition: 0.5s;
+  box-shadow: ${({ scroll }) =>
+    scroll ? "0px 0px 10px rgba(0, 0, 0, 0.1)" : "none"};
 
   .logo {
     color: ${({ scroll }) => (scroll ? "#21283b" : "#ffffff")};
   }
 
   .ghost {
-    background-color: ${({ scroll }) => (scroll && "#20cdcd")};
+    background-color: ${({ scroll }) => scroll && "#20cdcd"};
   }
 `;
 

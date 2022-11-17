@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Link from "next/link";
 
-export const Logo = styled.div`
+export const Container = styled(Link)`
   font-weight: 800;
   font-size: 1rem;
   line-height: 19px;

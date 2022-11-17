@@ -3,7 +3,7 @@ import { IGenericProps } from "../../../types";
 
 export const Text = styled.p`
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 20px;
   color: #21283b;
 

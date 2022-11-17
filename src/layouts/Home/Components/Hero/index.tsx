@@ -3,16 +3,19 @@ import Input from "../../../../components/Generic/Input";
 import { Text } from "../../../../components/Generic/Text";
 import { Title } from "../../../../components/Generic/Title";
 import { Wrapper } from "../../../../components/Wrapper";
+import { getStrapiMedia } from "../../../../lib/media";
+import { IImageProps } from "../../../../types";
 import { BottomContainer, Container, Content } from "./style";
 
 interface IHeroProps {
   title: string;
   paragraph: string;
+  image: IImageProps;
 }
 
-export default function Hero({ title, paragraph }: IHeroProps) {
+export default function Hero({ title, paragraph, image }: IHeroProps) {
   return (
-    <Container>
+    <Container backgroundURL={getStrapiMedia(image)}>
       <Wrapper>
         <Content>
           <Title

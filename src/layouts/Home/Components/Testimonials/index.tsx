@@ -69,13 +69,7 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
                       <Star width={20} height={20} key={index} />
                     ))}
                   </StarsWrapper>
-                  <Text
-                    sx={{
-                      fontSize: "0.875rem",
-                    }}
-                  >
-                    {paragraph}
-                  </Text>
+                  <Text>{paragraph}</Text>
                   <AuthorWrapper>
                     <ImageWrapper>
                       <Image
@@ -87,9 +81,6 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
                     <AuthorText>
                       <Text
                         as="span"
-                        sx={{
-                          fontSize: "0.875rem",
-                        }}
                       >
                         {author}
                       </Text>

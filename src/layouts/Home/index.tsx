@@ -1,7 +1,7 @@
 import { IImageProps, ILinkProps } from "../../types";
-import Hero from "./Components/Hero";
-import ProductDisplay from "./Components/ProductDisplay";
-import Testimonials from "./Components/Testimonials";
+import Hero from "./components/Hero";
+import ProductDisplay from "./components/ProductDisplay";
+import Testimonials from "./components/Testimonials";
 import { Container } from "./style";
 
 interface IProductDisplayProps {
@@ -32,6 +32,7 @@ interface IHomeProps {
         hero: {
           title: string;
           paragraph: string;
+          background_image: IImageProps;
         };
         product_display: IProductDisplayProps[];
         testimonials: ITestimonialsData[];
@@ -46,6 +47,7 @@ export default function Home({ homepage }: IHomeProps) {
       <Hero
         title={homepage.data.attributes.hero.title}
         paragraph={homepage.data.attributes.hero.paragraph}
+        image={homepage.data.attributes.hero.background_image}
       />
       {homepage.data.attributes.product_display.map(
         ({

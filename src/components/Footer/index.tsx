@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Input from "../Generic/Input";
 import { Text } from "../Generic/Text";
-import { Logo } from "../Logo";
+import Logo from "../Logo";
 import {
   Container,
   Copyright,
@@ -15,9 +15,7 @@ export default function Footer() {
     <Container>
       <InnerContainer>
         <div>
-          <Logo>
-            Team<span>.</span>
-          </Logo>
+          <Logo href="/" />
           <Text
             sx={{
               marginTop: "60px",

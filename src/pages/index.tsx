@@ -15,6 +15,16 @@ export async function getStaticProps() {
               id
               title
               paragraph
+              background_image {
+                data {
+                  attributes {
+                    url
+                    alternativeText
+                    width
+                    height
+                  }
+                }
+              }
             }
             product_display {
               id
