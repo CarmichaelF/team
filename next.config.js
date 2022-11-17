@@ -7,7 +7,14 @@ const nextConfig = {
   },
   images: {
     loader: "default",
-    domains: ["localhost"],
+    domains: ["localhost", "team-pj.herokuapp.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "https://team-pj.herokuapp.com",
+        pathname: "uploads",
+      },
+    ],
   },
 };
 
