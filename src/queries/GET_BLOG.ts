@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const GET_BLOG = gql`
   query getBlog {
-    blog(publicationState: LIVE) {
+    blog {
       data {
         id
         attributes {
@@ -27,7 +27,7 @@ const GET_BLOG = gql`
               }
             }
           }
-          articles {
+          articles(publicationState: LIVE) {
             data {
               id
               attributes {

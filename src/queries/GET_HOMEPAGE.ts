@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const GET_HOMEPAGE = gql`
   {
-    homepage(publicationState: LIVE) {
+    homepage {
       data {
         id
         attributes {
@@ -21,7 +21,7 @@ const GET_HOMEPAGE = gql`
               }
             }
           }
-          product_display {
+          product_display(publicationState: LIVE) {
             id
             title
             paragraph
@@ -54,7 +54,7 @@ const GET_HOMEPAGE = gql`
             offset
             reversed
           }
-          testimonials {
+          testimonials(publicationState: LIVE) {
             id
             stars
             paragraph
