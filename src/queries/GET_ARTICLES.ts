@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const GET_ARTICLES = gql`
   {
-    articles {
+    articles(publicationState: LIVE) {
       data {
         id
         attributes {
