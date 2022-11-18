@@ -73,7 +73,7 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
                   <AuthorWrapper>
                     <ImageWrapper>
                       <Image
-                        layout="fill"
+                        fill
                         src={getStrapiMedia(avatar)}
                         alt={author}
                       />

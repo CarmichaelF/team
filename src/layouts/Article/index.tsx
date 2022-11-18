@@ -17,7 +17,7 @@ import { Text } from "../../components/Generic/Text";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { getStrapiMedia } from "../../lib/media";
-import dateFormat, { masks } from "dateformat";
+import { getDateFormat } from "../../utils";
 
 export interface IArticleData {
   id: string;
@@ -33,6 +33,7 @@ export interface IArticleData {
     article_image: IImageProps;
     article_content: string;
     createdAt: string;
+    slug: string;
   };
 }
 
@@ -54,7 +55,7 @@ export default function Article({ article }: IArticleProps) {
 
   // format date in the formate of "Day Month Date, Year"
 
-  const date = dateFormat(createdAt, "dd mmm. yyyy");
+  const date = getDateFormat(createdAt);
 
   const { text: readingTimeText } = readingTime(
     article.attributes.article_content
@@ -67,6 +68,9 @@ export default function Article({ article }: IArticleProps) {
           sx={{
             marginBottom: "30px",
             fontSize: "32px",
+            "@media(max-width: 768px)": {
+              lineHeight: "34px",
+            },
             "@media (min-width: 768px)": {
               textAlign: "center",
             },
@@ -88,7 +92,7 @@ export default function Article({ article }: IArticleProps) {
       <AuthorSection>
         <ImageWrapper>
           <Image
-            layout="fill"
+            fill
             src={getStrapiMedia(article_author.avatar)}
             alt={article_author.avatar.data.attributes.alternativeText}
           />
@@ -145,9 +149,9 @@ export default function Article({ article }: IArticleProps) {
       >
         <ImageWrapper>
           <Image
-            layout="fill"
-            src="/assets/jonathan-peters-avatar.png"
-            alt="Img alt"
+            fill
+            src={getStrapiMedia(article_author.avatar)}
+            alt={article_author.avatar.data.attributes.alternativeText}
           />
         </ImageWrapper>
         <AuthorSectionText

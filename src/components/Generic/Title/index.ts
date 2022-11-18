@@ -10,7 +10,6 @@ export const Title = styled.h1<ITitleProps>`
   font-size: 1.4375rem;
   line-height: 29px;
   color: #21283b;
-  ${({ sx }) => sx && sx};
 
   span {
     color: ${({ highlightColor }) =>
@@ -21,4 +20,5 @@ export const Title = styled.h1<ITitleProps>`
     font-size: 3rem;
     line-height: 67px;
   }
+  ${({ sx }) => sx && sx};
 `;

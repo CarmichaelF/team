@@ -3,11 +3,11 @@
 //     query: "(max-width: 768px)",
 //   });
 import { useMediaQuery } from "react-responsive";
-import { ReactElement, PropsWithChildren, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 interface IsMobileProps {
-  mobile: ReactElement;
-  desktop: ReactElement;
+  mobile?: ReactElement;
+  desktop?: ReactElement;
 }
 
 export default function IsMobile({ mobile, desktop }: IsMobileProps) {
@@ -22,5 +22,11 @@ export default function IsMobile({ mobile, desktop }: IsMobileProps) {
     query: "(max-width: 768px)",
   });
 
-  return isMounted && isMobile ? mobile : desktop;
+  return isMounted && isMobile
+    ? mobile
+      ? mobile
+      : null
+    : desktop
+    ? desktop
+    : null;
 }

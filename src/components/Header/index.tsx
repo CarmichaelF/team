@@ -15,6 +15,7 @@ import {
 } from "./style";
 import Button from "../Button";
 import IsMobile from "../IsMobile";
+import { Router } from "next/router";
 
 interface HeaderProps {
   isHome?: boolean;
@@ -31,7 +32,7 @@ export default function Header({ isHome = false }: HeaderProps) {
   };
 
   useEffect(() => {
-    if (!isHome) return
+    if (!isHome) return;
     const callback = () => {
       setScroll(window.scrollY > 400);
     };
@@ -49,10 +50,22 @@ export default function Header({ isHome = false }: HeaderProps) {
     }
   }, [isHome]);
 
+  useEffect(() => {
+    Router.events.on("routeChangeComplete", () => {
+      setIsMobileMenuActive(false);
+    });
+
+    return () => {
+      Router.events.off("routeChangeComplete", () => {
+        setIsMobileMenuActive(false);
+      });
+    };
+  }, []);
+
   const links = [
     {
       label: "Home",
-      href: "#",
+      href: "/",
     },
     {
       label: "About Us",
@@ -60,7 +73,7 @@ export default function Header({ isHome = false }: HeaderProps) {
     },
     {
       label: "Blog",
-      href: "#",
+      href: "/blog",
     },
     {
       label: "Contact Us",
