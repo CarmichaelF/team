@@ -14,6 +14,5 @@ export async function getStaticProps() {
     props: {
       homepage: data.homepage,
     },
-    revalidate: 10,
   };
 }
