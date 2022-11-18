@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const GET_BLOG = gql`
   query getBlog {
-    blog {
+    blog(publicationState: LIVE) {
       data {
         id
         attributes {

@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const GET_HOMEPAGE = gql`
   {
-    homepage {
+    homepage(publicationState: LIVE) {
       data {
         id
         attributes {
