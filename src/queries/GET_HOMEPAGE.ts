@@ -21,7 +21,7 @@ const GET_HOMEPAGE = gql`
               }
             }
           }
-          product_display(publicationState: LIVE) {
+          product_display {
             id
             title
             paragraph
@@ -54,7 +54,7 @@ const GET_HOMEPAGE = gql`
             offset
             reversed
           }
-          testimonials(publicationState: LIVE) {
+          testimonials {
             id
             stars
             paragraph
