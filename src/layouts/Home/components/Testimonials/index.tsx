@@ -44,6 +44,7 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
           <Slider
             {...{
               dots: false,
+              arrows: false,
               infinite: true,
               slidesToShow: 3,
               slidesToScroll: 1,
@@ -51,6 +52,7 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
                 {
                   breakpoint: 768,
                   settings: {
+                    arrows: false,
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     infinite: true,
@@ -72,18 +74,10 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
                   <Text>{paragraph}</Text>
                   <AuthorWrapper>
                     <ImageWrapper>
-                      <Image
-                        fill
-                        src={getStrapiMedia(avatar)}
-                        alt={author}
-                      />
+                      <Image fill src={getStrapiMedia(avatar)} alt={author} />
                     </ImageWrapper>
                     <AuthorText>
-                      <Text
-                        as="span"
-                      >
-                        {author}
-                      </Text>
+                      <Text as="span">{author}</Text>
                       <Text
                         as="span"
                         sx={{
