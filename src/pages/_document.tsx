@@ -7,7 +7,6 @@ import Document, {
 } from "next/document";
 import Script from "next/script";
 import { ServerStyleSheet } from "styled-components";
-import lax from "lax.js";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -38,7 +37,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head></Head>
+        <Head/>
         <body>
           <Main />
           <NextScript />

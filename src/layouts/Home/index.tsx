@@ -40,7 +40,6 @@ interface IHomeProps {
 }
 
 export default function Home({ homepage }: IHomeProps) {
-  console.log(homepage);
   return (
     <Container>
       <Hero

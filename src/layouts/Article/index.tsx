@@ -45,8 +45,6 @@ export default function Article({ article }: IArticleProps) {
   const { article_author, article_content, article_image, summary, title } =
     article.data;
 
-  console.log(article_content);
-
   // format date in the formate of "Day Month Date, Year"
 
   const date = getDateFormat(first_publication_date);
