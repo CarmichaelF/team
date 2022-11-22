@@ -13,7 +13,7 @@ export const Title = styled.h1<ITitleProps>`
 
   span {
     color: ${({ highlightColor }) =>
-      highlightColor ? `#${highlightColor}` : "#20cdcd"};
+      highlightColor ? `${highlightColor}` : "#20cdcd"};
   }
 
   @media (min-width: 768px) {

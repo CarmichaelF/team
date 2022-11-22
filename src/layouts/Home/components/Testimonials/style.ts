@@ -47,8 +47,10 @@ export const AuthorWrapper = styled.div`
 
 export const ImageWrapper = styled.div`
   width: 40px;
-  height: 40px;
+  height: 55px;
   position: relative;
+  border-radius: 50px;
+  overflow: hidden;
 `;
 
 export const AuthorText = styled.div`

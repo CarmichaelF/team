@@ -12,7 +12,7 @@ export const Container = styled.a<IContainerProps>`
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
-  color: ${({ color }) => color && `#${color}`};
+  color: ${({ color }) => color && `${color}`};
   gap: 10px;
   ${({ sx }) => sx && sx};
 

@@ -20,7 +20,7 @@ import {
 } from "./style";
 import ChevronRight from "../../../../icons/ChevronRight";
 import { ITestimonialsData } from "../..";
-import { getStrapiMedia } from "../../../../lib/media";
+
 
 interface ITestimonialsProps {
   testimonials: ITestimonialsData[];
@@ -74,7 +74,7 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
                   <Text>{paragraph}</Text>
                   <AuthorWrapper>
                     <ImageWrapper>
-                      <Image fill src={getStrapiMedia(avatar)} alt={author} />
+                      <Image fill src={avatar.url} alt={author} />
                     </ImageWrapper>
                     <AuthorText>
                       <Text as="span">{author}</Text>

@@ -15,26 +15,25 @@ import readingTime from "reading-time";
 import { Title } from "../../components/Generic/Title";
 import { Text } from "../../components/Generic/Text";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import { getStrapiMedia } from "../../lib/media";
 import { getDateFormat } from "../../utils";
+import { RTTextNodeBase } from "@prismicio/types";
+import { PrismicRichText } from "@prismicio/react";
 
 export interface IArticleData {
   id: string;
-  attributes: {
+  data: {
     title: string;
     summary: string;
     article_author: {
-      id: string;
       name: string;
       avatar: IImageProps;
       role: string;
-    };
+    }[];
     article_image: IImageProps;
-    article_content: string;
-    createdAt: string;
-    slug: string;
+    article_content: any;
   };
+  first_publication_date: string;
+  uid: string;
 }
 
 interface IArticleProps {
@@ -42,24 +41,22 @@ interface IArticleProps {
 }
 
 export default function Article({ article }: IArticleProps) {
-  const {
-    attributes: {
-      article_author,
-      article_content,
-      article_image,
-      summary,
-      title,
-      createdAt,
-    },
-  } = article;
+  const { first_publication_date } = article;
+  const { article_author, article_content, article_image, summary, title } =
+    article.data;
+
+  console.log(article_content);
 
   // format date in the formate of "Day Month Date, Year"
 
-  const date = getDateFormat(createdAt);
+  const date = getDateFormat(first_publication_date);
 
-  const { text: readingTimeText } = readingTime(
-    article.attributes.article_content
-  );
+  //merge all the text nodes into one string adding a space between each node
+  const content = article_content.reduce((acc : any, node : any) => {
+    return acc + node.text;
+  }, "");
+
+  const { text: readingTimeText } = readingTime(content);
 
   return (
     <Container>
@@ -93,8 +90,8 @@ export default function Article({ article }: IArticleProps) {
         <ImageWrapper>
           <Image
             fill
-            src={getStrapiMedia(article_author.avatar)}
-            alt={article_author.avatar.data.attributes.alternativeText}
+            src={article_author[0].avatar.url}
+            alt={article_author[0].avatar.alt}
           />
         </ImageWrapper>
         <AuthorSectionText>
@@ -104,7 +101,7 @@ export default function Article({ article }: IArticleProps) {
               textTransform: "uppercase",
             }}
           >
-            {article_author.name}
+            {article_author[0].name}
           </Title>
           <Title
             as="span"
@@ -122,8 +119,8 @@ export default function Article({ article }: IArticleProps) {
         <Image
           width={1160}
           height={544}
-          src={getStrapiMedia(article_image)}
-          alt={article_image.data.attributes.alternativeText}
+          src={article_image.url}
+          alt={article_image.alt}
           layout="responsive"
           sizes="(max-width: 1160px) 100vw, 1160px
               (max-width: 768px) 100vw, 768px
@@ -136,7 +133,7 @@ export default function Article({ article }: IArticleProps) {
         <span>{readingTimeText}</span>
       </ReadingTime>
       <Content>
-        <ReactMarkdown>{article_content}</ReactMarkdown>
+        <PrismicRichText field={article_content} />
       </Content>
       <AuthorSection
         sx={{
@@ -150,8 +147,8 @@ export default function Article({ article }: IArticleProps) {
         <ImageWrapper>
           <Image
             fill
-            src={getStrapiMedia(article_author.avatar)}
-            alt={article_author.avatar.data.attributes.alternativeText}
+            src={article_author[0].avatar.url}
+            alt={article_author[0].avatar.alt}
           />
         </ImageWrapper>
         <AuthorSectionText
@@ -169,7 +166,7 @@ export default function Article({ article }: IArticleProps) {
               textTransform: "uppercase",
             }}
           >
-            {article_author.name}
+            {article_author[0].name}
           </Title>
           <Title
             as="span"

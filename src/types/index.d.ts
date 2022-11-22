@@ -1,3 +1,4 @@
+import { RTNode } from "@prismicio/types";
 export interface IGenericProps {
   sx?: any;
 }
@@ -9,14 +10,9 @@ export interface ISVGProps {
 }
 
 export interface IImageProps {
-  data: {
-    attributes: {
-      url: string;
-      alternativeText: string;
-      width: number;
-      height: number;
-    };
-  };
+  url: string;
+  alt: string;
+  dimensions: { width: number; height: number };
 }
 
 export interface ILinkProps {

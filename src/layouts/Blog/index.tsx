@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Text } from "../../components/Generic/Text";
 import { Title } from "../../components/Generic/Title";
 import IsMobile from "../../components/IsMobile";
-import { getStrapiMedia } from "../../lib/media";
 import { getDateFormat } from "../../utils";
 import { IArticleData } from "../Article";
 import {
@@ -36,10 +35,8 @@ export default function Blog({ blog }: IBlogProps) {
   return (
     <Container>
       <InnerContainer>
-        <Featured
-          bgImage={getStrapiMedia(featured_post.data.attributes.article_image)}
-        >
-          <Link href={`/article/${featured_post.data.attributes.slug}`}>
+        <Featured bgImage={featured_post.data.article_image.url}>
+          <Link href={`/article/${featured_post.data.slug}`}>
             <Title
               as="h2"
               sx={{
@@ -63,9 +60,9 @@ export default function Blog({ blog }: IBlogProps) {
                     fontSize: "1.5rem",
                   }}
                 >
-                  {featured_post.data.attributes.title.length > 38
-                    ? featured_post.data.attributes.title.slice(0, 38) + "..."
-                    : featured_post.data.attributes.title}
+                  {featured_post.data.title.length > 38
+                    ? featured_post.data.title.slice(0, 38) + "..."
+                    : featured_post.data.title}
                 </Title>
               }
               desktop={
@@ -75,7 +72,7 @@ export default function Blog({ blog }: IBlogProps) {
                     fontSize: "1.5rem",
                   }}
                 >
-                  {featured_post.data.attributes.title}
+                  {featured_post.data.title}
                 </Title>
               }
             />
@@ -87,7 +84,7 @@ export default function Blog({ blog }: IBlogProps) {
                     color: "#ffffff",
                   }}
                 >
-                  {featured_post.data.attributes.summary}
+                  {featured_post.data.summary}
                 </Text>
               }
             />
@@ -101,7 +98,7 @@ export default function Blog({ blog }: IBlogProps) {
                 marginBottom: "60px",
               }}
             >
-              {featured_post.data.attributes.summary}
+              {featured_post.data.summary}
             </Text>
           }
         />
@@ -125,17 +122,15 @@ export default function Blog({ blog }: IBlogProps) {
           {articles.data.map(
             ({
               id,
-              attributes: {
-                title,
-                article_image,
-                summary,
-                createdAt,
-                article_author,
-                slug,
-              },
+              title,
+              article_image,
+              summary,
+              createdAt,
+              article_author,
+              slug,
             }) => (
               <ArticleCard href={`/article/${slug}`} key={id}>
-                <ArticleImage bgImage={getStrapiMedia(article_image)} />
+                <ArticleImage bgImage={article_image.url} />
                 <ArticleText>
                   <Title
                     as="span"
@@ -164,10 +159,8 @@ export default function Blog({ blog }: IBlogProps) {
                   <AuthorSection>
                     <AvatarImageWrapper>
                       <Image
-                        src={getStrapiMedia(article_author.avatar)}
-                        alt={
-                          article_author.avatar.data.attributes.alternativeText
-                        }
+                        src={article_author.avatar.url}
+                        alt={article_author.avatar.alt}
                         fill
                       />
                     </AvatarImageWrapper>

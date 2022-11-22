@@ -3,10 +3,13 @@ import IsMobile from "../../../../components/IsMobile";
 import { TextCopy } from "../../components";
 import { Container, ContentWrapper, ImageContainer } from "./style";
 import { IImageProps, ILinkProps } from "../../../../types";
-import { getStrapiMedia } from "../../../../lib/media";
+
+import { PrismicRichTextProps } from "@prismicio/react";
+import { RichTextField } from "@prismicio/types";
 
 interface IProductDisplayProps {
   title: string;
+  highlighted_word: string;
   text: string;
   image: {
     offset?: {
@@ -26,6 +29,7 @@ interface IProductDisplayProps {
 
 export default function ProductDisplay({
   title,
+  highlighted_word,
   text,
   image,
   link,
@@ -34,10 +38,11 @@ export default function ProductDisplay({
   reversed,
 }: IProductDisplayProps) {
   return (
-    <Container>
+    <Container className={`product-display${reversed ? "-reversed" : ""}`}>
       <ContentWrapper direction={reversed ? "row-reverse" : "row"}>
         <TextCopy
           highlightColor={highlightColor}
+          highlighted_word={highlighted_word}
           title={title}
           text={text}
           link={link}
@@ -45,27 +50,27 @@ export default function ProductDisplay({
         <IsMobile
           mobile={
             <ImageContainer
-              offsetLeft={reversed ? offset : 0}
-              offsetRight={!reversed ? offset : 0}
+              offsetLeft={reversed ? -offset : 0}
+              offsetRight={!reversed ? -offset : 0}
             >
               <Image
-                width={image.sizes.mobile.data.attributes.width}
-                height={image.sizes.mobile.data.attributes.height}
-                src={getStrapiMedia(image.sizes.mobile)}
-                alt={image.sizes.mobile.data.attributes.alternativeText}
+                width={image.sizes.mobile.dimensions.width}
+                height={image.sizes.mobile.dimensions.height}
+                src={image.sizes.mobile.url}
+                alt={image.sizes.mobile.alt}
               />
             </ImageContainer>
           }
           desktop={
             <ImageContainer
-              offsetLeft={reversed ? offset : 0}
-              offsetRight={!reversed ? offset : 0}
+              offsetLeft={reversed ? -offset : 0}
+              offsetRight={!reversed ? -offset : 0}
             >
               <Image
-                width={image.sizes.desktop.data.attributes.width}
-                height={image.sizes.desktop.data.attributes.height}
-                src={getStrapiMedia(image.sizes.desktop)}
-                alt={image.sizes.desktop.data.attributes.alternativeText}
+                width={image.sizes.desktop.dimensions.width}
+                height={image.sizes.desktop.dimensions.height}
+                src={image.sizes.desktop.url}
+                alt={image.sizes.desktop.alt}
               />
             </ImageContainer>
           }

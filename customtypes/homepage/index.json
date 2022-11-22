@@ -1,0 +1,159 @@
+{
+  "id": "homepage",
+  "label": "Homepage",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "hero": {
+        "type": "Group",
+        "config": {
+          "label": "hero",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
+            },
+            "paragraph": {
+              "type": "Text",
+              "config": {
+                "label": "paragraph",
+                "placeholder": ""
+              }
+            },
+            "background_image": {
+              "type": "Image",
+              "config": {
+                "label": "background_image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "product_display": {
+        "type": "Group",
+        "config": {
+          "label": "product_display",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
+            },
+            "highlighted_word": {
+              "type": "Text",
+              "config": {
+                "label": "highlighted_word",
+                "placeholder": ""
+              }
+            },
+            "paragraph": {
+              "type": "Text",
+              "config": {
+                "label": "paragraph",
+                "placeholder": ""
+              }
+            },
+            "desktop_image": {
+              "type": "Image",
+              "config": {
+                "label": "desktop_image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "select": "document"
+              }
+            },
+            "highlight_color": {
+              "type": "Color",
+              "config": {
+                "label": "highlight_color",
+                "placeholder": ""
+              }
+            },
+            "mobile_image": {
+              "type": "Image",
+              "config": {
+                "label": "mobile_image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "offset": {
+              "type": "Number",
+              "config": {
+                "label": "offset",
+                "placeholder": ""
+              }
+            },
+            "reversed": {
+              "type": "Boolean",
+              "config": {
+                "label": "reversed",
+                "default_value": false,
+                "placeholder_true": "true",
+                "placeholder_false": "false"
+              }
+            }
+          }
+        }
+      },
+      "testimonials": {
+        "type": "Group",
+        "config": {
+          "label": "testimonials",
+          "fields": {
+            "stars": {
+              "type": "Number",
+              "config": {
+                "label": "stars",
+                "placeholder": ""
+              }
+            },
+            "paragraph": {
+              "type": "Text",
+              "config": {
+                "label": "paragraph",
+                "placeholder": ""
+              }
+            },
+            "avatar": {
+              "type": "Image",
+              "config": {
+                "label": "avatar",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "author": {
+              "type": "Text",
+              "config": {
+                "label": "author",
+                "placeholder": ""
+              }
+            },
+            "role": {
+              "type": "Text",
+              "config": {
+                "label": "role",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "_cts": {
+    "article": {
+      "article_content": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
+    "blog": {},
+    "homepage": {
+      "product_display": {}
+    }
+  }
+}

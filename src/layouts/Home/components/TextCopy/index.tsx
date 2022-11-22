@@ -3,11 +3,10 @@ import { Text } from "../../../../components/Generic/Text";
 import { Title } from "../../../../components/Generic/Title";
 import { ILinkProps } from "../../../../types";
 import { Container } from "./style";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 
 interface ITextCopyProps {
   title: string;
+  highlighted_word: string;
   text: string;
   link: ILinkProps;
   highlightColor: string;
@@ -15,15 +14,23 @@ interface ITextCopyProps {
 
 export default function TextCopy({
   title,
+  highlighted_word,
   text,
   link,
   highlightColor,
 }: ITextCopyProps) {
   return (
     <Container>
-      <Title as="h3" highlightColor={highlightColor}>
-        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{title}</ReactMarkdown>
-      </Title>
+      <Title
+        as="h3"
+        highlightColor={highlightColor}
+        dangerouslySetInnerHTML={{
+          __html: title.replace(
+            highlighted_word,
+            `<span>${highlighted_word}</span>`
+          ),
+        }}
+      ></Title>
       <Text
         sx={{
           marginTop: "15px",

@@ -1,3 +1,4 @@
+import { RichTextField } from "@prismicio/types";
 import { IImageProps, ILinkProps } from "../../types";
 import { Hero, ProductDisplay, Testimonials } from "./components";
 import { Container } from "./style";
@@ -5,6 +6,7 @@ import { Container } from "./style";
 interface IProductDisplayProps {
   id: string;
   title: string;
+  highlighted_word: string;
   paragraph: string;
   link: ILinkProps;
   desktop_image: IImageProps;
@@ -26,33 +28,33 @@ export interface ITestimonialsData {
 interface IHomeProps {
   homepage: {
     data: {
-      attributes: {
-        hero: {
-          title: string;
-          paragraph: string;
-          background_image: IImageProps;
-        };
-        product_display: IProductDisplayProps[];
-        testimonials: ITestimonialsData[];
-      };
+      hero: {
+        title: string;
+        paragraph: string;
+        background_image: IImageProps;
+      }[];
+      product_display: IProductDisplayProps[];
+      testimonials: ITestimonialsData[];
     };
   };
 }
 
 export default function Home({ homepage }: IHomeProps) {
+  console.log(homepage);
   return (
     <Container>
       <Hero
-        title={homepage.data.attributes.hero.title}
-        paragraph={homepage.data.attributes.hero.paragraph}
-        image={homepage.data.attributes.hero.background_image}
+        title={homepage.data.hero[0].title}
+        paragraph={homepage.data.hero[0].paragraph}
+        image={homepage.data.hero[0].background_image}
       />
-      {homepage.data.attributes.product_display.map(
+      {homepage.data.product_display.map(
         ({
           id,
           desktop_image,
           link,
           title,
+          highlighted_word,
           mobile_image,
           paragraph,
           highlight_color,
@@ -76,10 +78,11 @@ export default function Home({ homepage }: IHomeProps) {
             highlightColor={highlight_color}
             offset={offset}
             reversed={reversed}
+            highlighted_word={highlighted_word}
           />
         )
       )}
-      <Testimonials testimonials={homepage.data.attributes.testimonials} />
+      <Testimonials testimonials={homepage.data.testimonials} />
     </Container>
   );
 }

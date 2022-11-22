@@ -7,12 +7,12 @@ const nextConfig = {
   },
   images: {
     loader: "default",
-    domains: ["localhost", "team-pj.herokuapp.com"],
+    domains: ["localhost", "images.prismic.io"],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "https://team-pj.herokuapp.com",
-        pathname: "uploads",
+        hostname: "images.prismic.io",
+        pathname: "team-project",
       },
     ],
   },

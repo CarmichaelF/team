@@ -1,18 +1,14 @@
 import Home from "../layouts/Home";
-import client from "../apollo-client";
-import GET_HOMEPAGE from "../queries/GET_HOMEPAGE";
+import { client } from "../../prismicio";
 
 export default Home;
 
 export async function getStaticProps() {
-  
-  const { data } = await client.query({
-    query: GET_HOMEPAGE,
-  });
+  const page = await client.getByType("homepage");
 
   return {
     props: {
-      homepage: data.homepage,
+      homepage: page.results[0],
     },
   };
 }

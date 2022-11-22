@@ -1,0 +1,78 @@
+{
+  "id": "article",
+  "label": "Article",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "summary": {
+        "type": "Text",
+        "config": {
+          "label": "summary",
+          "placeholder": ""
+        }
+      },
+      "article_author": {
+        "type": "Group",
+        "config": {
+          "label": "article_author",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "name",
+                "placeholder": ""
+              }
+            },
+            "avatar": {
+              "type": "Image",
+              "config": {
+                "label": "avatar",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "role": {
+              "type": "Text",
+              "config": {
+                "label": "role",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "article_image": {
+        "type": "Image",
+        "config": {
+          "label": "article_image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "article_content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "article_content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "slug",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
