@@ -9,6 +9,7 @@ export async function getStaticProps() {
   return {
     props: {
       homepage: page.results[0],
+      revalidate: 10,
     },
   };
 }
