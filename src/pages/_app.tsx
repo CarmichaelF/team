@@ -44,9 +44,6 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    // <ApolloProvider client={client}>
-
-    // </ApolloProvider>
     <PrismicProvider
       internalLinkComponent={({ href, children, ...rest }) => (
         <Link href={href} {...rest}>

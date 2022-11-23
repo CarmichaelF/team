@@ -21,7 +21,6 @@ import {
 import ChevronRight from "../../../../icons/ChevronRight";
 import { ITestimonialsData } from "../..";
 
-
 interface ITestimonialsProps {
   testimonials: ITestimonialsData[];
 }
@@ -64,8 +63,8 @@ export default function Testimonials({ testimonials }: ITestimonialsProps) {
             ref={sliderRef}
           >
             {testimonials.map(
-              ({ id, author, avatar, paragraph, role, stars }) => (
-                <TestimonialCard key={id}>
+              ({ author, avatar, paragraph, role, stars }, index) => (
+                <TestimonialCard key={index}>
                   <StarsWrapper>
                     {Array.from({ length: stars }).map((_, index) => (
                       <Star width={20} height={20} key={index} />

@@ -8,7 +8,7 @@ export default function Base({ children }: PropsWithChildren) {
   const { pathname } = useRouter();
   const isHome = pathname === "/";
   return (
-    <Container as="footer">
+    <Container>
       <Header isHome={isHome} />
       <main>{children}</main>
       <Footer />

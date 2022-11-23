@@ -48,20 +48,22 @@ export default function Home({ homepage }: IHomeProps) {
         image={homepage.data.hero[0].background_image}
       />
       {homepage.data.product_display.map(
-        ({
-          id,
-          desktop_image,
-          link,
-          title,
-          highlighted_word,
-          mobile_image,
-          paragraph,
-          highlight_color,
-          offset,
-          reversed,
-        }) => (
+        (
+          {
+            desktop_image,
+            link,
+            title,
+            highlighted_word,
+            mobile_image,
+            paragraph,
+            highlight_color,
+            offset,
+            reversed,
+          },
+          index
+        ) => (
           <ProductDisplay
-            key={id}
+            key={index}
             title={title}
             text={paragraph}
             image={{

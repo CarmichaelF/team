@@ -20,23 +20,19 @@ import {
 
 interface IBlogProps {
   blog: {
-    featured_post: {
-      data: IArticleData;
-    };
-    articles: {
-      data: IArticleData[];
-    };
+    featuredPost: IArticleData[];
+    articles: IArticleData[];
   };
 }
 
 export default function Blog({ blog }: IBlogProps) {
-  const { featured_post, articles } = blog;
+  const { featuredPost, articles } = blog;
 
   return (
     <Container>
       <InnerContainer>
-        <Featured bgImage={featured_post.data.article_image.url}>
-          <Link href={`/article/${featured_post.data.slug}`}>
+        <Featured bgImage={featuredPost[0].data.article_image.url}>
+          <Link href={featuredPost[0].url}>
             <Title
               as="h2"
               sx={{
@@ -60,9 +56,9 @@ export default function Blog({ blog }: IBlogProps) {
                     fontSize: "1.5rem",
                   }}
                 >
-                  {featured_post.data.title.length > 38
-                    ? featured_post.data.title.slice(0, 38) + "..."
-                    : featured_post.data.title}
+                  {featuredPost[0].data.title.length > 38
+                    ? featuredPost[0].data.title.slice(0, 38) + "..."
+                    : featuredPost[0].data.title}
                 </Title>
               }
               desktop={
@@ -72,7 +68,7 @@ export default function Blog({ blog }: IBlogProps) {
                     fontSize: "1.5rem",
                   }}
                 >
-                  {featured_post.data.title}
+                  {featuredPost[0].data.title}
                 </Title>
               }
             />
@@ -84,7 +80,7 @@ export default function Blog({ blog }: IBlogProps) {
                     color: "#ffffff",
                   }}
                 >
-                  {featured_post.data.summary}
+                  {featuredPost[0].data.summary}
                 </Text>
               }
             />
@@ -98,7 +94,7 @@ export default function Blog({ blog }: IBlogProps) {
                 marginBottom: "60px",
               }}
             >
-              {featured_post.data.summary}
+              {featuredPost[0].data.summary}
             </Text>
           }
         />
@@ -119,17 +115,14 @@ export default function Blog({ blog }: IBlogProps) {
           Recent blog posts
         </Title>
         <Articles>
-          {articles.data.map(
+          {articles.map(
             ({
               id,
-              title,
-              article_image,
-              summary,
-              createdAt,
-              article_author,
-              slug,
+              first_publication_date,
+              url,
+              data: { title, article_image, summary, article_author },
             }) => (
-              <ArticleCard href={`/article/${slug}`} key={id}>
+              <ArticleCard href={url} key={id}>
                 <ArticleImage bgImage={article_image.url} />
                 <ArticleText>
                   <Title
@@ -159,8 +152,8 @@ export default function Blog({ blog }: IBlogProps) {
                   <AuthorSection>
                     <AvatarImageWrapper>
                       <Image
-                        src={article_author.avatar.url}
-                        alt={article_author.avatar.alt}
+                        src={article_author[0].avatar.url}
+                        alt={article_author[0].avatar.alt}
                         fill
                       />
                     </AvatarImageWrapper>
@@ -176,7 +169,7 @@ export default function Blog({ blog }: IBlogProps) {
                           },
                         }}
                       >
-                        {article_author.name}
+                        {article_author[0].name}
                       </Title>
                       <Text
                         as="span"
@@ -189,7 +182,7 @@ export default function Blog({ blog }: IBlogProps) {
                           },
                         }}
                       >
-                        {getDateFormat(createdAt)}
+                        {getDateFormat(first_publication_date)}
                       </Text>
                     </AuthorText>
                   </AuthorSection>

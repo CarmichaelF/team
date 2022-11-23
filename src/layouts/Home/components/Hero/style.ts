@@ -5,9 +5,12 @@ interface IContainerProps {
 }
 
 export const Container = styled.section<IContainerProps>`
-  background: ${({ backgroundURL }) => `url(${backgroundURL}) no-repeat 70%`};
+  background-image: ${({ backgroundURL }) => `url(${backgroundURL})`};
+  background-repeat: no-repeat;
+  background-position: 70%;
   min-height: 568px;
   background-size: cover;
+  position: relative;
 
   @media (min-width: 1024px) {
     min-height: 815px;
@@ -17,6 +20,20 @@ export const Container = styled.section<IContainerProps>`
   @media (min-width: 1440px) {
     background-position: 50% 50%;
   }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      25.73% 52.62% at 72.07% 48.01%,
+      rgba(33, 40, 59, 0) 0%,
+      rgba(33, 40, 59, 0.4) 100%
+    );
+  }
 `;
 
 export const Content = styled.div`
@@ -25,6 +42,8 @@ export const Content = styled.div`
   align-items: flex-start;
   max-width: 655px;
   padding-top: 130px;
+  z-index: 10;
+  position: relative;
 
   @media (min-width: 768px) {
     padding-top: 230px;

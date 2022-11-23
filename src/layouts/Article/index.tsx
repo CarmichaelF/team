@@ -16,11 +16,12 @@ import { Title } from "../../components/Generic/Title";
 import { Text } from "../../components/Generic/Text";
 import Image from "next/image";
 import { getDateFormat } from "../../utils";
-import { RTTextNodeBase } from "@prismicio/types";
 import { PrismicRichText } from "@prismicio/react";
 
 export interface IArticleData {
   id: string;
+  first_publication_date: string;
+  url: string;
   data: {
     title: string;
     summary: string;
@@ -32,8 +33,6 @@ export interface IArticleData {
     article_image: IImageProps;
     article_content: any;
   };
-  first_publication_date: string;
-  uid: string;
 }
 
 interface IArticleProps {
@@ -50,7 +49,7 @@ export default function Article({ article }: IArticleProps) {
   const date = getDateFormat(first_publication_date);
 
   //merge all the text nodes into one string adding a space between each node
-  const content = article_content.reduce((acc : any, node : any) => {
+  const content = article_content.reduce((acc: any, node: any) => {
     return acc + node.text;
   }, "");
 
